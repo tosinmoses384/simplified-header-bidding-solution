@@ -1,0 +1,52 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Header Bidding System</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/prebid.js@latest/dist/prebid.min.js"></script>
+  <script async src="https://www.googletagservices.com/tag/js/gpt.js"></script>
+</head>
+<body>
+  <div id="div-gpt-ad-12345-0"></div>
+  <div id="fallback-ad" style="display: none;">Fallback Ad</div>
+  <script src="../src/main.js"></script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Header Bidding System</title>
+
+  <!-- External Scripts -->
+  <script async src="https://cdn.jsdelivr.net/npm/prebid.js@latest/dist/prebid.min.js"></script>
+  <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+  <!-- GOOGLE Analytics Tracking ID -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=YOUR_GA_TRACKING_ID"></script>  
+
+  <script>
+    // Google Analytics Setup
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'YOUR_GA_TRACKING_ID');
+  </script>
+</head>
+<body>
+  <!-- Ad Slots -->
+  <h5>Div-1 (Regular Ad)</h5>
+  <div id="div-1" style="min-height: 250px"></div>
+
+  <h5>Div-Fallback (Fallback Ad)</h5>
+  <div id="div-fallback" style="min-height: 250px"></div>
+
+  <script src="../src/main.js"></script>
+</body>
+</html>

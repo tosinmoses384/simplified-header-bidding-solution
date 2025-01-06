@@ -1,0 +1,31 @@
+name: Deploy Header Bidding Code
+
+on:
+  push:
+    branches:
+      - main  # Trigger the workflow on push to the main branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'  # Or your preferred Node.js version
+
+      - name: Install dependencies (if any)
+        run: npm install  # If you have any dependencies, install them here
+
+      - name: Build (if necessary)
+        run: npm run build  # If you have a build process, run it here
+
+      - name: Deploy to server
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./  # Or the directory where your built files are located
