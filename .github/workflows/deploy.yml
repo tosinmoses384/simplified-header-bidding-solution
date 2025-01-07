@@ -1,31 +1,33 @@
-name: Deploy Header Bidding Code
+name: Validate Header Bidding Code
 
 on:
   push:
     branches:
-      - main  # Trigger the workflow on push to the main branch
+      - main  # Run the workflow on pushes to the main branch
 
 jobs:
-  deploy:
+  validate:
     runs-on: ubuntu-latest
 
     steps:
+      # Step 1: Checkout the code from the repository
       - name: Checkout code
         uses: actions/checkout@v3
 
+      # Step 2: Setup Node.js environment
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'  # Or your preferred Node.js version
+          node-version: '18'  # Use the latest stable version if necessary
 
-      - name: Install dependencies (if any)
-        run: npm install  # If you have any dependencies, install them here
+      # Step 3: Install dependencies (if any)
+      - name: Install dependencies
+        run: npm install
 
-      - name: Build (if necessary)
-        run: npm run build  # If you have a build process, run it here
+      # Step 4: Run linting (optional but recommended for code quality)
+      - name: Run Linter
+        run: npm run lint  # Ensure you have a lint script in your package.json
 
-      - name: Deploy to server
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./  # Or the directory where your built files are located
+      # Step 5: Run Prebid.js validation (basic check for syntax and dependencies)
+      - name: Validate Prebid.js setup
+        run: npm run validate  # Add this script in package.json if needed
